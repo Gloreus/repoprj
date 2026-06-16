@@ -1,0 +1,11 @@
+testCaseData:
+  description: "Первый тест"
+  blockSql: "select 1 from dual"
+  params:
+    - name: "P1"
+      paramType: VARCHAR2
+      paramMode: IN
+    - name: "P2"
+      paramType: NUMBER
+      paramMode: IN_OUT
+      value: 32

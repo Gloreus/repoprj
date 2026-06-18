@@ -4,7 +4,7 @@ import lombok.Data;
 
 /// Ответ исполнителя тест-кейса
 @Data
-public class CaseResponse<T> {
+public class TestCaseResponse<T> {
     private String message;
     private String status;
     private T value;

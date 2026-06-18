@@ -2,8 +2,7 @@ package ru.sqbt.plsqltests;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import ru.sqbt.plsqltests.caseentity.TestCase;
-import ru.sqbt.plsqltests.caseentity.TestCaseData;
+import ru.sqbt.plsqltests.core.TestCaseData;
 import ru.sqbt.plsqltests.core.BlockType;
 import ru.sqbt.plsqltests.ora.OracleTypes;
 

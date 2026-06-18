@@ -1,16 +1,15 @@
 package ru.sqbt.plsqltests.caseentity;
 
 import lombok.Data;
-import ru.sqbt.plsqltests.caseentity.expect.Expectation;
-import ru.sqbt.plsqltests.core.BlockType;
-import ru.sqbt.plsqltests.core.DbParam;
-import ru.sqbt.plsqltests.core.DbTypes;
-import ru.sqbt.plsqltests.core.TransactionMode;
+import ru.sqbt.plsqltests.core.ExpectationData;
+import ru.sqbt.plsqltests.core.TestCaseData;
 
 import java.util.List;
 
 @Data
 public class TestCase {
+    /// Описание тест-кейса
     private TestCaseData testCaseData;
-    private List<Expectation> expectations;
+    /// Ожидаемые результаты, все должны выполниться для успешного теста
+    private List<ExpectationData> expectations;
 }

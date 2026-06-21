@@ -10,16 +10,6 @@ import java.util.List;
 @RequestMapping("/")
 public class mainController {
 
-    private final TestDataService testDataService;
-
-    public mainController(TestDataService testDataService) {
-        this.testDataService = testDataService;
-    }
-
-    @GetMapping("/")
-    List<String> list() {
-        return testDataService.getList();
-    }
 
 }
 

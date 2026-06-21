@@ -1,7 +1,5 @@
 profileName: "11"
 description: "Описание"
 references:
-  - filePath: "test_01.yaml"
-    testId: 019e60ee-d07d-7056-bdd4-2cadfb85bbb5
   - filePath: "1.yaml"
   - filePath: "2.yaml"

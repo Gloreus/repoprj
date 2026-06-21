@@ -9,3 +9,8 @@ testCaseData:
       paramType: NUMBER
       paramMode: IN_OUT
       value: 32
+  expectations:
+    - expectClass: "ru.sqbt.plsqltests.ora.OutputExpectationData"
+      expectType: VARCHAR2
+      validationType: TO_BE_EQUAL
+      expected: "Test string content"

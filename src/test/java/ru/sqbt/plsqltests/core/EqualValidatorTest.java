@@ -25,10 +25,7 @@ class EqualValidatorTest extends EqualValidator {
         resValue.setValue("1024");
         td.setValue(resValue);
 
-        OutputExpectationData ed = new OutputExpectationData();
-        ed.setValidationType(ValidationType.TO_BE_EQUAL);
-        ed.setExpectType(OracleTypes.VARCHAR2);
-        ed.setExpected("1024");
+        OutputExpectationData ed = new OutputExpectationData(OracleTypes.VARCHAR2, ValidationType.TO_BE_EQUAL,"1024", "");
 
         assertDoesNotThrow(() ->  validate(ed, td));
 

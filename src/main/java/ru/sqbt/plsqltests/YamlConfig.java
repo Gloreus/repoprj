@@ -1,5 +1,6 @@
 package ru.sqbt.plsqltests;
 
+import com.fasterxml.jackson.databind.DeserializationConfig;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -17,10 +18,12 @@ public class YamlConfig {
     public ObjectMapper objectMapper() {
         ObjectMapper mapper =  new ObjectMapper(new YAMLFactory());
         mapper.registerModule(new JavaTimeModule());
-        mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        mapper.configure(
+                DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT,true);
+       // mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         mapper.registerModule(new SimpleModule() {{
             addDeserializer(DbTypes.class, new DbTypesJsonDeserializer());
-            addDeserializer(ExpectationData.class, new ExpectationJsonDeserializer());
+            addDeserializer(ExpectationData.class, new ExpectationDataJsonDeserializer());
         }});
         return mapper;
     }

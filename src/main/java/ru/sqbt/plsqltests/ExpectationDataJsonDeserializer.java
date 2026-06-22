@@ -6,19 +6,24 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import lombok.extern.slf4j.Slf4j;
 import ru.sqbt.plsqltests.core.ExpectationData;
+
 
 import java.io.IOException;
 
-public class ExpectationJsonDeserializer extends JsonDeserializer<ExpectationData> {
+@Slf4j
+public class ExpectationDataJsonDeserializer extends JsonDeserializer<ExpectationData> {
     @Override
     public ExpectationData deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         ObjectCodec codec = p.getCodec();
-        JsonNode node = codec.readTree(p);
+
+        ObjectNode node = codec.readTree(p);
 
         // Получаем полное имя класса из поля @class
         String className = node.get("expectClass").asText();
-
+        log.debug("ExpectationData: {}", className);
         try {
             // Загружаем класс по имени
             Class<?> clazz = Class.forName(className);
@@ -27,9 +32,9 @@ public class ExpectationJsonDeserializer extends JsonDeserializer<ExpectationDat
             if (!ExpectationData.class.isAssignableFrom(clazz)) {
                 throw new IOException("Class " + className + " is not a subclass of ExpectationData");
             }
-
             // Создаём ObjectMapper для десериализации в конкретный тип
             ObjectMapper mapper = (ObjectMapper) codec;
+            node.remove("expectClass");
             return (ExpectationData) mapper.convertValue(node, clazz);
         } catch (ClassNotFoundException e) {
             throw new IOException("Class not found: " + className, e);

@@ -1,5 +1,5 @@
 testCaseData:
-  description: "Первый тест"
+  description: "Первый тест2222"
   blockSql: "select 1 from dual"
   params:
     - name: "P1"
@@ -9,8 +9,10 @@ testCaseData:
       paramType: NUMBER
       paramMode: IN_OUT
       value: 32
-  expectations:
-    - expectClass: "ru.sqbt.plsqltests.ora.OutputExpectationData"
-      expectType: VARCHAR2
-      validationType: TO_BE_EQUAL
-      expected: "Test string content"
+
+expectations:
+  - expectType: VARCHAR2
+    validationType: TO_BE_EQUAL
+    expected: "Test string content"
+    expected2: ""
+    expectClass: "ru.sqbt.plsqltests.ora.OutputExpectationData"
